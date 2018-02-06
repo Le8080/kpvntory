@@ -1,0 +1,28 @@
+Product
+    Name
+    ?Can be sold | can be purchased
+
+    General info
+        Product type (Consumable, Stockable)
+        Category
+        Internal Reference
+        Barcode
+
+    Purchase History
+        Purchase Price
+        Quantity
+        Supplier
+        Expiration Date
+        isinitial_inventory
+    
+    Inventory
+        Operations
+            Routes
+            Customer Lead  Time
+        Logistics
+            Weight
+            Volume
+            Responsible
+    Sales 
+        Sales Price
+    Notes
