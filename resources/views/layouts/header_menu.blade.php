@@ -128,7 +128,9 @@
                                     <span class="l l3"></span>
                                     <span class="l l4"></span>
                                     
-                                </div><li class="fa fa-barcode"></li> KapeVentory </div>
+                                </div>
+                                <li class="fa fa-barcode"></li> KapeVentory 
+                            </div>
                         </div>
                         <nav class="menu">
                             <ul class="sidebar-menu metismenu" id="sidebar-menu">
@@ -186,7 +188,8 @@
                                         <li><a href="/categories"><span class="fa fa-tasks"></span> Product Categories</a>  </li>
                                         <li><a href="/suppliers"> <span class="fa fa-truck"></span> Suppliers</a> </li>
                                         <li><a href="/companies"><span class="fa fa-suitcase"></span> Company</a> </li>
-                                        <li><a href="/branches"> <span class="fa fa-users"></span>Branches</a> </li>
+                                        <li><a href="/branches"> <span class="fa fa-sitemap"></span>Branches</a> </li>
+                                        <li><a href="/users"> <span class="fa fa-users"></span>Users</a> </li>
                                     </ul>
                                     
                                 </li>

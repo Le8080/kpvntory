@@ -11,6 +11,26 @@
 |
 */
 $data = array();
+
+/**
+ * user router
+ */
+#login
+Route::get('/authenticate', function () {
+    return view('users/authenticate');
+});
+#list of users
+Route::get('/users', function () {
+    return view('users/users');
+});
+#userprofileudapte
+Route::get('/users/{userid}/{isupdate}', 'UserController@reroute');
+#useprofileview
+Route::get('/users/{userid}', 'UserController@reroute');
+/**
+ * end of user router
+ */
+
 Route::get('/', function () {
     return view('index');
 });

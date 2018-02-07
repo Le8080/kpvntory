@@ -52,19 +52,18 @@
                                 <div class="col-sm-6">
                                     <label for="type" class="form-control-label">Type</label>
                                     <select class="form-control underlined">
-                                                    <option>Consumable</option>
-                                                    <option>Stockable</option>
-                                                    <option>Service</option>
+                                        <option>Consumable</option>
+                                        <option>Stockable</option>
+                                        <option>Service</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="category" class="form-control-label">Category</label>
                                     <select class="form-control underlined">
-                                                    <option>All</option>
-                                                    <option>Sales</option>
+                                        <option>All</option>
+                                        <option>Sales</option>
                                     </select>
                                 </div>
-                                
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group row">
