@@ -5,10 +5,7 @@
                         <div class="title-block">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h3 class="title"> Users
-                                        <a href="/users/0/true" class="btn btn-primary btn-sm rounded-s"> 
-                                        <li class="fa fa-plus-circle"></li> Create New </a>
-                                    </h3>
+                                    <h3 class="title"> Company</h3>
                                 </div>
                             </div>
                         </div>
@@ -26,12 +23,14 @@
                         </div>
                     </div>
                     <section class="section">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
+                        <div class="row sameheight-container">
+                            <div class="col-md-6">
+                                <div class="card sameheight-item">
                                     <div class="card-block">
                                         <div class="card-title-block">
-                                            <h3 class="title">List of Users </h3>
+                                            <h3 class="title">List of Company
+                                            <a href="/companies/0/false" class="btn btn-primary btn-sm rounded-s"> 
+                                            <li class="fa fa-plus-circle"></li> Create New </a></h3>
                                         </div>
                                         <section class="example">
                                             <div class="table-responsive">
@@ -40,19 +39,52 @@
                                                         <tr>
                                                             <th >#</th>
                                                             <th>Name</th>
-                                                            <th>Email</th>
-                                                            <th>Company</th>
-                                                            <th>Branch</th>
+                                                            <th>Location</th>
+                                                            <th>Contact No</th>
                                                             <th></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
                                                             <td>1</td>
-                                                            <td>John Doe</td>
-                                                            <td>johndoe@kapemug.com</td>
-                                                            <td>Company ABV</td>
-                                                            <td>Tower B</td>
+                                                            <td>ABC</td>
+                                                            <td>Pampanga</td>
+                                                            <td>12133</td>
+                                                            <td><center><i class="fa fa-cog"></i> | <i class="fa fa-trash-o"></i></center></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card sameheight-item">
+                                    <div class="card-block">
+                                        <div class="card-title-block">
+                                            <h3 class="title">Branch 
+                                            <a href="/companies/0/true" class="btn btn-primary btn-sm rounded-s"> 
+                                            <li class="fa fa-plus-circle"></li> Create New </a></h3>
+                                        </div>
+                                        <section class="example">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped  table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th >#</th>
+                                                            <th>Name</th>
+                                                            <th>Location</th>
+                                                            <th>Contact No</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>ABC</td>
+                                                            <td>Pampanga</td>
+                                                            <td>12133</td>
                                                             <td><center><i class="fa fa-cog"></i> | <i class="fa fa-trash-o"></i></center></td>
                                                         </tr>
                                                     </tbody>

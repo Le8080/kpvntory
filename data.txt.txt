@@ -26,3 +26,20 @@ Product
     Sales 
         Sales Price
     Notes
+
+	
+Company
+	Name
+	Location
+	Contact Person
+	Contact No.
+	Contact Email.
+
+Branch
+	Name	
+	Location
+	COntact Person
+	Contact No.
+	Contact Email.
+	Company
+	

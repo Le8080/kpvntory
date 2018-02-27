@@ -1,0 +1,188 @@
+Step by step guide
+New Laravel via composer 
+
+TO install a laravel via composer
+
+	composer create-project --prefer-dist laravel/laravel [nameoffolder]
+
+Serving or running the app
+go to [nameoffolder]
+
+	php artisan serve
+	go to the link given ex. 127.0.0.1:8000
+	
+
+delete the folowing : vendor and composer lock
+
+run composer install
+
+Foldering
+Programmin	 	--- Controllers
+Models			-- App
+			models		-- root
+			controlers  -- http/controllers
+Configuration	-- config
+Assets			-- public folder
+Views			-- resources
+Unit test		-- test
+app dependencies -- vendor
+application routes -- routes/web.php
+database		--database
+	migration (help us create database structure)
+	seed 	(help us fill our database data)
+
+	
+
+some command
+
+php artisan serve
+php artisan down
+php artisan up
+php artisan cache:clear
+
+
+creating componets
+
+	create controller  : php artisan make:controller [name of controller]
+	create model : php artisan make:model [name of mode]
+	migration : php artisan make:model Room -m
+	
+#type data can be return on responce
+Route::get('/',function(){
+
+	return '<h3></h3>'; #as string
+	return view('welcome'); #as view
+	
+	$response_arr =[];
+	$response_arr['au'] ='test;
+	return $response_arr; 			#the array will convert to json response)
+});
+
+
+#Passing value to a view
+Route::get('/',function(){
+	$data = [];
+	$data['test'] = '0.2.2';
+	return view ('welcome',$data);
+});
+#onview page using
+{{ $test }}
+
+#Dependency Injection
+	#adding class instance to another instance using the class constructor
+	
+			method	controllername@method
+Route::get('/di','ClientController@di');
+
+#service providers are the command center for bootstrapping
+	#bootstrapping to register components to used within application s(service container, event listeners, middleware and routes)
+	
+php artisan make:provider [provider name]
+
+#FACADEs provides simplified interface
+easier too use, read, dependency, static interface to complex classes, shared singleton isntance
+
+
+DB::selecet('');
+Crypt::encrypt('2323');
+Crypt::dencrypt('2323');
+	
+	
+#controllers
+php artisan make:controller [nameofcontroller]
+
+
+routing controllers 
+
+Route::get('/','Controllername@Methodname');
+Route::post('/create','Controllername@Methodname'); #endingform
+Route::put('/add','Controllername@Methodname'); #adding
+Route::patch('/update','Controllername@Methodname'); #updating
+Route::delete('/delete','Controllername@Methodname'); #deleting
+
+#sendinf parameters to a controller
+
+Route::get('/{parameterid}','Controllername@Methodname');
+
+#view
+index.blade.php
+			[foldername/file]
+return view('client/index');
+
+#layouts
+#create template and extend the views
+#using a layouts
+#inside the body insert
+@yield('content')
+
+#fix url assets using
+href="{{assets(css/file.css)}}"
+
+#add content to the body from different view file
+#extend the content
+		[folder.filename]
+@extends('layouts.app');
+@section ('content')
+<h5>home</h5?
+@endsection
+
+#send data to the views
+
+$o=new \stdclass;
+$o->tett='';
+$i=new \stdclass;
+$i->tes='sd;
+$data['ts'][]=$o;
+$data['ts'][]=$i;
+view('name',$data);
+
+blade will help us simplify
+
+
+Foreach on views
+titles
+@foreach($titles as $title)
+	<li>{{ $title }}</li>		// {{mustache
+#endforeach
+
+#ifelse in views
+{{ $modify == 1 ? 'Modify CLient' : 'New Client'}}
+
+#Forms
+
+<form action="{{ $modify == 1 ? route('update', ['id'=>1]) " route('create')">
+
+#process form
+CSRF or cross site request forgery
+
+#go to verifyCSRFtoken.php;
+protected $except = [
+'*'
+];
+
+#go to the controler create/update
+ex
+public function newClient (Request $request){
+$data =[ ];
+$data['title'] = $request->input('title');
+$data['name'] = $request->input('name');
+
+	if($request->isMethod('post')){
+		
+	}
+}
+
+#validate data
+$this->validate(
+	$request,[
+		'title'=>'required|min:5',
+		'name' =>'required'
+	]
+);
+
+#showing error on the FE
+#using moustache syntax
+{{ $erors->first('title') }}
+
+#helper ex/
+<input type ="Text" name = "title" value="{{ old('title') }}">

@@ -31,6 +31,16 @@ Route::get('/users/{userid}', 'UserController@reroute');
  * end of user router
  */
 
+/**
+ * company router
+ */
+Route::get('/companies',function(){
+    return view('company/companies');
+});
+Route::get('/companies/{userid}/{isupdate}', 'CompanyController@reroute');
+/**
+ * end of company router
+ */
 Route::get('/', function () {
     return view('index');
 });
