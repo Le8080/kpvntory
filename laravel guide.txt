@@ -1,4 +1,10 @@
-Step by step guide
+
+total 178
+Nismo : 79.7
+PAG : 76.7
+CYS: 11
+Adhoc :6.6 (ubidy seatin, create tech exam, assist examiner, pmt meeting, meeting tech concerns, browserstack purchase, interview applicant)
+Holiday : 4Step by step guide
 New Laravel via composer 
 
 TO install a laravel via composer
@@ -186,3 +192,182 @@ $this->validate(
 
 #helper ex/
 <input type ="Text" name = "title" value="{{ old('title') }}">
+
+#ORM object-relational mapper
+#on laravel it uses eloquent
+#eloquent based on ActiveRecord
+#Active record pattern wraps a database table into a class and an instance of that class to a single row
+#any action performed on that object will be reflected on the databases.
+
+#DATABASE CONFIG IS ON .env file
+# .env - config the DB_HOST
+
+#got to AppServiceProvider.php
+#and add use Illuminate\Support\Facades\Schema;
+public function boot(){
+ //
+	Schema::defaultStringLength(191) ;
+}
+
+#database migration - set of instructions to create database structure.
+
+php artisan make:migration sample_migration_name --create=name
+php artisan make:migration create_clients_table --create=clients
+
+
+->Database->Migrations
+
+Schema::create('rooms', function (Blueprint $table){
+			[column type][columnname]
+	$table->increments('id');
+	$table->string('title');
+	$table->string('name');
+	$table->string('lastname');
+	$table->date('date');
+	$table->integer('client_id')->unsigned();
+					[columnname]			[columnname][table toreference]
+	$table->foreign('client_id')->references('id')->on('clients');
+	$table->timestamps();
+});
+
+
+#HOW TO RUN THE MIGRATION
+php artisan migrate
+
+#create model
+php artisan make:model [nameofmodel]
+
+
+#testing if models work using tinker
+php artisan tinker
+>>> namespace App;
+>>> $client = new Client();
+=>App\Client {#706}
+
+#get all records
+>>>$clinet->all();
+
+#getrecords with filter
+>>>$client->where('id',1)->get();
+
+#inserting record
+>>>$client->insert([
+'title'=>'dr',
+'name'=>'mark',
+'lastname'=>'hamilton',
+'address'=>'test'
+]);
+
+#import models on controller
+use App\Client as $client
+
+add on function Client $client = like the Request $request
+$client->insert($data);
+
+#use eloquent to select data
+Client $client
+$this->client = $client;
+
+
+$data['clients'] = $this->client->all;
+#finding/getting record;
+$client_Data = $this->client->find($clientid);
+
+#using the fetchdata
+$client_Data->title;
+$client_Data->name;
+
+{{ old('name') ? old('name') : $name }}
+
+#using update
+$client_data = $this->client->find($client_id);
+$client_data->save();
+
+#relations on Eloquent
+#hasmany
+public function reservations(){
+	return $this->hasMany('\App\Reservations');
+}
+#on tinker to check
+php artisan tinker
+>>>namespace App;
+>>> $client = new Client();
+
+>>>$selected = $client->find(1);
+>>>$selected->reservations();
+>>>$selected->reservations()->get();
+
+#belongsto
+public function client()
+{
+return $this->belongsTo('App\Client','client_id', 'id');
+}
+
+#test
+php artisan tinker
+>>>namespace App;
+>>>$reservation = new Reservations();
+>>>$selected =>$reservation->find(1);
+>>>$selected->client->get();
+
+#on app ex Room.php aa
+use Illuminate\Support\Facades\DB;
+
+public function getAvailablerooms($startdate,$enddate){
+	$availablerooms = DB::table('rooms as r)
+								->select('r.id','r.name')
+								->whereRaw("r.id NOT IN(
+									SELECT b.room_id FROM reservations b where Not(b.date_out < '{$start_data}' OR
+										b.date_in > '{$end_date}'
+									)
+								)")
+								->where('room_id',$room_id) //sample regular whre only
+								->orderBy('r.id');
+								->get()
+								;
+	return $availablerooms;
+}
+
+#implementation on roomscontroller;
+use App\Client;
+use App\Rooms;
+public function checkavail($client_id, Request $request){
+	$dateFrom = $request->input('from');
+	$dateto = $request->input('to');
+	$client = new Client();
+	$room = new Room();
+	
+	$data = []'
+	$data['dateFrom'] = $dateFrom;
+	$data['dateTo']	= $dateTo;
+	$data['rooms'] = $room->getAvailablerooms($dateFrom,$dateTo);
+	$data['client] = $client->find($client_id);
+}
+
+#implementing on views
+{{$client->title}}
+{{$client->title}}
+
+@unless(empty($dateFrom)  || empty($datato))	//show the listing if the date is field out
+	@foreach($rooms as $room)
+	{{$room->name}}
+	{{$room->date}}
+	@endforeach
+@endunless
+
+#addingroute on view
+ahref="{{ route('book_room',['client_id'=>$client->id] }}"
+
+
+ctr shft k
+
+
+$reservation->client()->associate($client); //belongTO
+$reservation->save();
+
+return redirect()->route('clients');
+
+
+#aborting
+
+abort(405,"aborttest message");
