@@ -29,7 +29,7 @@
                                     <div class="card-block">
                                         <div class="card-title-block">
                                             <h3 class="title">List of Company
-                                            <a href="/companies/0/false" class="btn btn-primary btn-sm rounded-s"> 
+                                            <a href="/companies/0/true" class="btn btn-primary btn-sm rounded-s"> 
                                             <li class="fa fa-plus-circle"></li> Create New </a></h3>
                                         </div>
                                         <section class="example">

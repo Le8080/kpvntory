@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Company;
 
 class CompanyController extends Controller
 {
-
+    public $companies;
     /**
      * reroute the user to create or update or just view the company
      *
@@ -33,11 +34,24 @@ class CompanyController extends Controller
         $data = array();
         $data['title'] = 'Add New Company';
         $data['titledescription'] = '';
+        $data['companyid'] = $companyid;
         if($companyid!=0){
             $data['title'] = 'Update company info';
+            $data['company'] = $company->find($companyid);
         }
         return view('company/company',$data);
     }
+    /**
+     * saves company information
+     *
+     * @param Company $company
+     * @param Request $request
+     * @return 
+     */
+    public function save(Company $company, Request $request){
+        
+    }
+    
     /**
      * view company info
      *

@@ -42,4 +42,17 @@ Branch
 	Contact No.
 	Contact Email.
 	Company
+
+
+User
+	username
+	password
+	company
+	branch
+	firstname
+	lastname
+	email
+	gender
+	contactnumber
+	
 	

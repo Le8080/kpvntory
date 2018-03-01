@@ -1,10 +1,4 @@
-
-total 178
-Nismo : 79.7
-PAG : 76.7
-CYS: 11
-Adhoc :6.6 (ubidy seatin, create tech exam, assist examiner, pmt meeting, meeting tech concerns, browserstack purchase, interview applicant)
-Holiday : 4Step by step guide
+Step by step guide
 New Laravel via composer 
 
 TO install a laravel via composer
@@ -259,7 +253,7 @@ php artisan tinker
 ]);
 
 #import models on controller
-use App\Client as $client
+use App\Client;
 
 add on function Client $client = like the Request $request
 $client->insert($data);
@@ -356,7 +350,7 @@ public function checkavail($client_id, Request $request){
 @endunless
 
 #addingroute on view
-ahref="{{ route('book_room',['client_id'=>$client->id] }}"
+ahref="{{ route('book_room',['client_id'=>$client->id]) }}"
 
 
 ctr shft k
